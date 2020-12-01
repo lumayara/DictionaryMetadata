@@ -1,0 +1,50 @@
+<div class="jumbotron">
+  <h1 class="display-4">Metadata Tagging API</h1>
+  <p class="lead">Dictionary for all words that will be used for tagging.</p>
+</div>
+<div class="container">
+  <div>
+    <input placeholder="tag" type="text" [(ngModel)]="placeTag"/>
+    <button type="button" class="btn btn-warning" (click)="select(placeTag)">Get tag name</button>
+      <ul *ngFor="let item of tags">
+        <li>{{item}}</li>
+      </ul>
+
+
+  </div>
+  <div class="row frontend-row">
+    <div class="col">
+      <form>
+        <div class="form-group example-list">
+          <div class="select-all">
+            <button class="btn btn-btn btn-primary" (click)="selectAll()">select all</button>
+            <button class="btn btn-btn btn-success" (click)="createItem()">create item</button>
+          </div>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="id-column">tag</th>
+                <th scope="col">synonym</th>
+                <th scope="col">update</th>
+                <th scope="col">delete</th>
+                <th scope="col">save</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let item of exampleItems">
+              <tr>
+                <!--https://angular.io/guide/template-syntax#ngModel-->
+                <!-- <td class="id-column"><input placeholder="id" [value]="exampleItems.val()" (input)="exampleItems.val()"></td> -->
+                <td><input placeholder="tag" [value]="item.tag" (input)="item.tag=$event.target.value"></td>
+                <td><input placeholder="synonyms" [value]="item.synonym" (input)="item.synonym=$event.target.value"></td>
+                <td><button type="button" class="btn btn-warning" (click)="updateItem(item)">update</button></td>
+                <td><button type="button" class="btn btn-danger" (click)="deleteItem(item)">delete</button></td>
+                <td><button type="button" class="btn btn-success" (click)="saveItem(item)" *ngIf="item.save !== undefined">save</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
