@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 export class AppComponent {
   exampleItems = [];
   tags = [];
+  placeTag ="";
 
   async selectAll() {
     try {
